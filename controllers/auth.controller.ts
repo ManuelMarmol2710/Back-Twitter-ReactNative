@@ -1,9 +1,8 @@
-
 import { Request, Response } from "express";
 import User from "../models/users";
 import jwt from "jsonwebtoken";
-
-export const login = async(req: Request, res: Response) => {
+import bcrypt from "bcrypt";
+export const login = async (req: Request, res: Response) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({ msg: "Usuario o contraseña invalidos." });
   }
@@ -13,12 +12,12 @@ export const login = async(req: Request, res: Response) => {
   if (!user) {
     return res.status(400).json({ msg: "Usuario o contraseña incorrectos." });
   }
-    const token = jwt.sign(
+  const token = jwt.sign(
     {
       //infromacion del usario email: nombre: imagen: ect
-    email: user.email,
+      email: user.email,
       name: user.name,
-       last_Name: user.last_Name,
+      last_Name: user.last_Name,
     },
     "secret",
     {
@@ -45,14 +44,16 @@ export const profile = (req: Request, res: Response) => {
   return res.json({
     profile: {
       username: req.payload,
-      name: req.params.name  ,
-      last_Name: req.body.last_Name
+      name: req.params.name,
+      last_Name: req.body.last_Name,
     },
   });
 };
 
-
-export const register = async (req: Request, res: Response): Promise<Response> => {
+export const register = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
   if (
     !req.body.email ||
     !req.body.password ||
@@ -68,10 +69,54 @@ export const register = async (req: Request, res: Response): Promise<Response> =
   if (user) {
     return res.status(400).json({ msg: "El usuario ya existe." });
   }
-
   const newUser = new User(req.body);
   await newUser.save();
-  return res.status(201).json(newUser);
+   return res.status(201).json(newUser);
 
-}
+};
 
+export const updateUserByEmail = async (req: Request, res: Response) => {
+  if (!req.body.name) {
+    return res.status(400).json({ msg: "Llenar algun campo de datos." });
+  }
+
+  const user = await User.findOneAndUpdate(
+    { email: req.params.email },
+    {
+      email: req.params.email,
+      name: req.body.name,
+      last_Name: req.body.last_Name,
+    },
+    { upsert: true, new: true }
+  );
+
+  res.status(200).json(user);
+};
+
+export const updatePassword = async (req: Request, res: Response) => {
+  const salt = await bcrypt.genSalt(10);
+  const contrasenaCifrada = await bcrypt.hash(req.body.password, salt);
+  const updatePassword = await User.findOneAndUpdate(
+    { email: req.params.email },
+    {
+      password: contrasenaCifrada,
+    },
+    { upsert: true, new: true }
+  );
+
+  res.status(200).json(updatePassword);
+};
+export const deleteUserByEmail = async (req: Request, res: Response) => {
+  const user = await User.findOneAndDelete({ email: req.params.email });
+  const { concept } = req.body;
+  if (!concept) {
+    return res
+      .status(400)
+      .json({ msg: "Por favor colocar su correo y su contraseña" });
+  }
+  if (user) {
+    res.status(200).json("Usuario eliminado");
+  } else {
+    return res.status(400).json({ msg: "Correo incorrecto." });
+  }
+};
