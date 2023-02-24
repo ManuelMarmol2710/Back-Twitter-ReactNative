@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import User from "../models/users";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+
 export const login = async (req: Request, res: Response) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({ msg: "Usuario o contraseña invalidos." });
@@ -71,8 +72,7 @@ export const register = async (
   }
   const newUser = new User(req.body);
   await newUser.save();
-   return res.status(201).json(newUser);
-
+  return res.status(201).json(newUser);
 };
 
 export const updateUserByEmail = async (req: Request, res: Response) => {
@@ -119,4 +119,40 @@ export const deleteUserByEmail = async (req: Request, res: Response) => {
   } else {
     return res.status(400).json({ msg: "Correo incorrecto." });
   }
+};
+
+const nodemailer = require("nodemailer");
+export const sendEmail = async (req: Request, res: Response) => {
+  const user = await User.findOne({ email: req.params.email });
+   const { email } = req.params;
+  const contentHTML = `
+<h1>User Information</h1>
+<ul>
+
+    <li>User Email: ${email}</li>
+    <li>Contraseña: ${user!.password}</li>
+</ul>
+`;
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "manuelmarmolonicos27@gmail.com",
+      pass: "ethecvirapfczzpk",
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+  let info = await transporter.sendMail({
+    from: '"Recover Password Server" <manuelmarmolonicos27@gmail.com>', // sender address,
+    to: email,
+    subject: "Password",
+    // text: 'Hello World'
+    html: contentHTML,
+  });
+  console.log("Message sent: %s", info.messageId);
+  res.status(200).json(info);
+  
 };
