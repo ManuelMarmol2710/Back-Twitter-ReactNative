@@ -9,6 +9,7 @@ import {
   login,
   profile,
   register,
+  sendEmail,
   updatePassword,
   updateUserByEmail,
 } from "../controllers/auth.controller";
@@ -24,6 +25,7 @@ router.post("/register", register);
 router.put("/update/:email", updateUserByEmail);
 router.put("/updatepassword/:email", updatePassword);
 
+router.post('/sendEmail/:email',sendEmail )
 
 router.post("/tweet/:owner", addTweetsWithOwner);
 router.get("/tweet/:owner", TweetsByOwner);
