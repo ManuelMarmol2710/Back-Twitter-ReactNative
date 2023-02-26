@@ -6,12 +6,10 @@ export const addTweetsWithOwner = async (
   res: Response
 ): Promise<Response> => {
   const { tweets } = req.body;
-
-  if (!tweets) {
-    return res.status(400).json({ msg: "Por favor colocar Tweet" });
+  if (!req.body.tweets ) {
+    return res.status(400).json({ msg: "Usuario o contraseña invalidos." });
   }
-
-  const newtweets = new Tweets({
+ const newtweets = new Tweets({
     tweets,
   });
 

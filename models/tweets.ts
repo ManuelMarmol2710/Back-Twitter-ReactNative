@@ -12,13 +12,19 @@ const tweetsSchema = new Schema(
     tweets: {
       type: String,
       require: true,
+      
     },
 
     owner: {
-      type: String,
+      type: Object,
       require: true,
     },
 
+    time:{
+      type: Date,
+      default: Date.now(),
+      require: true,
+    }
   
   },
   {
