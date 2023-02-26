@@ -120,6 +120,15 @@ export const deleteUserByEmail = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: "Correo incorrecto." });
   }
 };
+export const TweetsByOwnerOne = async (req: Request, res: Response) => {
+  const owner = await User.find({ email: req.params.email })
+
+  if (owner) {
+    res.status(200).json(owner);
+  } else {
+    return res.status(400).json({ msg: "Usuario incorrecto." });
+  }
+};
 
 const nodemailer = require("nodemailer");
 export const sendEmail = async (req: Request, res: Response) => {
