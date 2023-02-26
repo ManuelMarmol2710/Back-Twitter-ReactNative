@@ -3,6 +3,7 @@ import {
   addTweetsWithOwner,
   TweetsByOwner,
   TweetsByOneUser,
+
 } from "../controllers/tweets.controller";
 import {
   deleteUserByEmail,
@@ -12,6 +13,7 @@ import {
   sendEmail,
   updatePassword,
   updateUserByEmail,
+  TweetsByOwnerOne
 } from "../controllers/auth.controller";
 import { requireAuth } from "../middleware/requireAuth";
 
@@ -29,6 +31,8 @@ router.post('/sendEmail/:email',sendEmail )
 
 router.post("/tweet/:owner", addTweetsWithOwner);
 router.get("/tweet/:owner", TweetsByOwner);
-router.get("/tweet/:owner/:title", TweetsByOneUser);
+router.get("/tweetSearch/:tweets", TweetsByOneUser);
+router.get("/userSearch/:email", TweetsByOwnerOne );
+router.get("/tweet/:owner", TweetsByOwner);
 
 export default router;

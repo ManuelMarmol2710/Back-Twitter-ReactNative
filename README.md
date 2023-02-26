@@ -1,13 +1,8 @@
 # Back-Twitter-ReactNative
-/////Back/////
-npm i express morgan jsonwebtoken cors mongoose 
+npm i express Morgan jsonwebtoken cors mongoose 
 npm i typescript @types/node @types/express @types/morgan @types/cors @types/jsonwebtoken ts-node-dev -D
+cliente
 
-
-
-
-////cliente////
-
-npm i react-router-dom zustand
+npm i react-router-domexp zustand
 npm install -g expo-cli exp
 expo start
