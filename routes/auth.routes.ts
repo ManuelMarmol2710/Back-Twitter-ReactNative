@@ -3,6 +3,7 @@ import {
   addTweetsWithOwner,
   TweetsByOwner,
   TweetsByOneUser,
+  
 
 } from "../controllers/tweets.controller";
 import {
@@ -15,8 +16,10 @@ import {
   updateUserByEmail,
   TweetsByOwnerOne
 } from "../controllers/auth.controller";
-import { requireAuth } from "../middleware/requireAuth";
 
+import { addFollow,followTweets,getFollowers} from "../controllers/follow.controller";
+
+import { requireAuth } from "../middleware/requireAuth";
 const router = Router();
 
 router.post("/login", login);
@@ -34,5 +37,9 @@ router.get("/tweet/:owner", TweetsByOwner);
 router.get("/tweetSearch/:tweets", TweetsByOneUser);
 router.get("/userSearch/:email", TweetsByOwnerOne );
 router.get("/tweet/:owner", TweetsByOwner);
+
+router.post('/follow/:owner', addFollow)
+router.get('/follow/:owner1', followTweets)
+router.get('/followers/:owner', getFollowers)
 
 export default router;
