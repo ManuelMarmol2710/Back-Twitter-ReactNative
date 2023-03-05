@@ -7,10 +7,19 @@ export interface I_User extends Document {
   name: string;
   last_Name: string;
   password: string;
+  username: string;
+  biography: string;
   comparePassword: (password: string) => Promise<boolean>;
 }
 
 const userSchema = new Schema({
+  username: {
+    type: String,
+    unique: true,
+    required: true,
+    lowercase: true,
+    trim: true,
+  },
   email: {
     type: String,
     unique: true,
@@ -28,6 +37,10 @@ const userSchema = new Schema({
     require: true,
   },
 
+  biography:{
+    type: String,
+    require: true,
+  },
   password: {
     type: String,
     require: true,

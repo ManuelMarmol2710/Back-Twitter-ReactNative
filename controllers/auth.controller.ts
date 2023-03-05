@@ -4,11 +4,11 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 export const login = async (req: Request, res: Response) => {
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.username || !req.body.password) {
     return res.status(400).json({ msg: "Usuario o contraseña invalidos." });
   }
 
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ username: req.body.username});
 
   if (!user) {
     return res.status(400).json({ msg: "Usuario o contraseña incorrectos." });
@@ -19,6 +19,8 @@ export const login = async (req: Request, res: Response) => {
       email: user.email,
       name: user.name,
       last_Name: user.last_Name,
+      username: user.username,
+      biography: user.biography
     },
     "secret",
     {
@@ -47,6 +49,9 @@ export const profile = (req: Request, res: Response) => {
       username: req.payload,
       name: req.params.name,
       last_Name: req.body.last_Name,
+      Username: req.params.username,
+      biography: req.params.biography
+
     },
   });
 };
@@ -59,7 +64,9 @@ export const register = async (
     !req.body.email ||
     !req.body.password ||
     !req.body.name ||
-    !req.body.last_Name
+    !req.body.last_Name ||
+    !req.body.username ||
+    !req.body.biography
   ) {
     return res.status(400).json({ msg: "Llenar todos los campos de datos." });
   }
@@ -86,6 +93,7 @@ export const updateUserByEmail = async (req: Request, res: Response) => {
       email: req.params.email,
       name: req.body.name,
       last_Name: req.body.last_Name,
+      biography: req.body.biography,
     },
     { upsert: true, new: true }
   );
@@ -121,7 +129,7 @@ export const deleteUserByEmail = async (req: Request, res: Response) => {
   }
 };
 export const TweetsByOwnerOne = async (req: Request, res: Response) => {
-  const owner = await User.find({ email: req.params.email })
+  const owner = await User.find({username: req.params.username });
 
   if (owner) {
     res.status(200).json(owner);
@@ -133,7 +141,7 @@ export const TweetsByOwnerOne = async (req: Request, res: Response) => {
 const nodemailer = require("nodemailer");
 export const sendEmail = async (req: Request, res: Response) => {
   const user = await User.findOne({ email: req.params.email });
-   const { email } = req.params;
+  const { email } = req.params;
   const contentHTML = `
 <h1>User Information</h1>
 <ul>
@@ -163,5 +171,4 @@ export const sendEmail = async (req: Request, res: Response) => {
   });
   console.log("Message sent: %s", info.messageId);
   res.status(200).json(info);
-  
 };

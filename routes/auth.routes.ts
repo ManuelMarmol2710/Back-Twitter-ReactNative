@@ -35,7 +35,7 @@ router.post('/sendEmail/:email',sendEmail )
 router.post("/tweet/:owner", addTweetsWithOwner);
 router.get("/tweet/:owner", TweetsByOwner);
 router.get("/tweetSearch/:tweets", TweetsByOneUser);
-router.get("/userSearch/:email", TweetsByOwnerOne );
+router.get("/userSearch/:username", TweetsByOwnerOne );
 router.get("/tweet/:owner", TweetsByOwner);
 
 router.post('/follow/:owner', addFollow)
