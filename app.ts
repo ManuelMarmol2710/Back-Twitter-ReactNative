@@ -7,12 +7,13 @@ const app = express()
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:19006',
+    origin: 'exp://192.168.0.204:19000',
     credentials:true
 }));
 app.get("/", (_req, res) => {
   res.send(`  La api esta en http://localhost:${app.get("port")} `);
 });
+
 app.use(authRoutes)
 
 
