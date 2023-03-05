@@ -10,6 +10,9 @@ app.use(cors({
     origin: 'http://localhost:19006',
     credentials:true
 }));
+app.get("/", (_req, res) => {
+  res.send(`  La api esta en http://localhost:${app.get("port")} `);
+});
 app.use(authRoutes)
 
 
