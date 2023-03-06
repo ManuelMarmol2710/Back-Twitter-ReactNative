@@ -33,11 +33,18 @@ export const TweetsByOwner = async (req: Request, res: Response) => {
 };
 
 export const TweetsByOneUser = async (req: Request, res: Response) => {
-  const tweet = await Tweets.find({ tweets: req.params.tweets });
-
-  if (tweet) {
+  const tweet = await Tweets.find({ tweets:{ $regex: req.params.tweets }});
+if (tweet) {
     res.status(200).json(tweet);
   } else {
-    return res.status(400).json({ msg: "Titulo incorrecto." });
+    return res.status(400).json({ msg: "Tweet  no encontrado." });
+  }
+};
+export const deleteTweet = async (req: Request, res: Response) => {
+  const user = await Tweets.findOneAndDelete({ tweets: req.params.tweets });
+  if (user) {
+    res.status(200).json("Tweet eliminado");
+  } else {
+    return res.status(400).json({ msg: "Tweet incorrecto." });
   }
 };

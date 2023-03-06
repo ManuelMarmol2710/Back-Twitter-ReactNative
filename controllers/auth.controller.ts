@@ -129,7 +129,7 @@ export const deleteUserByEmail = async (req: Request, res: Response) => {
   }
 };
 export const TweetsByOwnerOne = async (req: Request, res: Response) => {
-  const owner = await User.find({username: req.params.username });
+   const owner = await User.find({username: {$regex: req.params.username}});
 
   if (owner) {
     res.status(200).json(owner);

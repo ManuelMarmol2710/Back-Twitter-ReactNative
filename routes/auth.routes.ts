@@ -3,7 +3,7 @@ import {
   addTweetsWithOwner,
   TweetsByOwner,
   TweetsByOneUser,
-  
+  deleteTweet
 
 } from "../controllers/tweets.controller";
 import {
@@ -14,7 +14,8 @@ import {
   sendEmail,
   updatePassword,
   updateUserByEmail,
-  TweetsByOwnerOne
+  TweetsByOwnerOne,
+  
 } from "../controllers/auth.controller";
 
 import { addFollow,followTweets,getFollowers} from "../controllers/follow.controller";
@@ -22,7 +23,7 @@ import { addFollow,followTweets,getFollowers} from "../controllers/follow.contro
 import { requireAuth } from "../middleware/requireAuth";
 const router = Router();
 
-router.post("/login", login);
+router.post("/login",login);
 router.delete("/profile/:email", deleteUserByEmail);
 
 router.get("/profile", requireAuth, profile);
@@ -37,7 +38,7 @@ router.get("/tweet/:owner", TweetsByOwner);
 router.get("/tweetSearch/:tweets", TweetsByOneUser);
 router.get("/userSearch/:username", TweetsByOwnerOne );
 router.get("/tweet/:owner", TweetsByOwner);
-
+router.delete('/deleteTweets/:tweets',deleteTweet);
 router.post('/follow/:owner', addFollow)
 router.get('/follow/:owner1', followTweets)
 router.get('/followers/:owner', getFollowers)
