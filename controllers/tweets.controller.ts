@@ -21,9 +21,8 @@ export const addTweetsWithOwner = async (
   return res.status(201).json(saveTweets);
 };
 export const TweetsByOwner = async (req: Request, res: Response) => {
-  const owner = await Tweets.find({ owner: req.params.owner }).select(
-    "tweets owner"
-  );
+  const owner = await Tweets.find({ owner: req.params.owner })
+
 
   if (owner) {
     res.status(200).json(owner);
