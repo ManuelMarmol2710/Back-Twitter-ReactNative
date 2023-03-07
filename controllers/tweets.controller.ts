@@ -40,6 +40,23 @@ if (tweet) {
     return res.status(400).json({ msg: "Tweet  no encontrado." });
   }
 };
+export const OrdenarTweetsPorFechas = async (req: Request, res: Response) => {
+  const tweet = await Tweets.find({tweets: { $regex: req.params.tweets }}).sort({"time": 1});
+if (tweet) {
+    res.status(200).json(tweet);
+  } else {
+    return res.status(400).json({ msg: "Tweet  no encontrado." });
+  }
+};
+export const OrdenarTweetsPorFechasNuevas = async (req: Request, res: Response) => {
+  const tweet = await Tweets.find({tweets: { $regex: req.params.tweets }}).sort({"time": -1});
+if (tweet) {
+    res.status(200).json(tweet);
+  } else {
+    return res.status(400).json({ msg: "Tweet  no encontrado." });
+  }
+};
+
 export const deleteTweet = async (req: Request, res: Response) => {
   const user = await Tweets.findOneAndDelete({ tweets: req.params.tweets });
   if (user) {

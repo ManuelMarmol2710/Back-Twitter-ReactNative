@@ -3,7 +3,9 @@ import {
   addTweetsWithOwner,
   TweetsByOwner,
   TweetsByOneUser,
-  deleteTweet
+  deleteTweet,
+  OrdenarTweetsPorFechas,
+  OrdenarTweetsPorFechasNuevas,
 
 } from "../controllers/tweets.controller";
 import {
@@ -38,7 +40,10 @@ router.get("/tweet/:owner", TweetsByOwner);
 router.get("/tweetSearch/:tweets", TweetsByOneUser);
 router.get("/userSearch/:username", TweetsByOwnerOne );
 router.get("/tweet/:owner", TweetsByOwner);
+router.get("/tweetsFilterForOld/:tweets", OrdenarTweetsPorFechas);
+router.get("/tweetsFilterForNew/:tweets", OrdenarTweetsPorFechasNuevas);
 router.delete('/deleteTweets/:tweets',deleteTweet);
+
 router.post('/follow/:owner', addFollow)
 router.get('/follow/:owner1', followTweets)
 router.get('/followers/:owner', getFollowers)
