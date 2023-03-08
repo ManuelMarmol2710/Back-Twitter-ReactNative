@@ -29,8 +29,11 @@ const commentsSchema = new Schema(
       type: Date,
       default: Date.now(),
   
-    }
-  
+    },
+    like: {
+      type: Boolean,
+      require: true,
+    },
   },
   {
     versionKey: false,
