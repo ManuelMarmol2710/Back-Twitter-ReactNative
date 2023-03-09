@@ -74,3 +74,32 @@ export const addCommentWithOwner = async (
   
     res.status(200).json(user);
   };
+
+
+  export const updateComments= async (req: Request, res: Response) => {
+    if (!req.body.comment) { 
+      return res.status(400).json({ msg: "Llenar algun campo de datos." });
+    }
+  
+    const user = await Comments.findByIdAndUpdate(
+      { _id: req.params._id },
+      {
+        
+        comment: req.body.comment,
+      
+      },
+      { new: true }
+    );
+  
+    res.status(200).json(user);
+  };
+
+
+  export const deleteComment = async (req: Request, res: Response) => {
+    const user = await Comments.findByIdAndDelete({ _id: req.params._id });
+    if (user) {
+      res.status(200).json("comentario eliminado");
+    } else {
+      return res.status(400).json({ msg: "comentario incorrecto." });
+    }
+  };

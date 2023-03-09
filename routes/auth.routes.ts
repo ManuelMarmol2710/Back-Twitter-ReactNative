@@ -17,7 +17,7 @@ import {
   TweetsByOwnerOne,
   
 } from "../controllers/auth.controller";
-import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment} from "../controllers/comments.controller"
+import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment,deleteComment,updateComments} from "../controllers/comments.controller"
 import { addFollow,followTweets,getFollowers} from "../controllers/follow.controller";
 
 import { addLike, GetLike, dislike} from "../controllers/like.controller";
@@ -51,6 +51,8 @@ router.get('/comment/:id_tweet',commentsByid)
 router.put('/likeComment/:_id/:owner', addLikeComment);
 router.get('/likeComment/:_id', GetLikeComment);
 router.put('/notlikeComment/:_id', dislikeComment);
+router.put('/updateComment/:_id',updateComments)
+router.delete('/deleteComment/:_id', deleteComment);
 
 router.post('/follow/:owner', addFollow);
 router.get('/follow/:owner1', followTweets);

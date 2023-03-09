@@ -7,15 +7,15 @@ export const login = async (req: Request, res: Response) => {
   if (!req.body.username || !req.body.password) {
     return res.status(400).json({ msg: "Usuario o contraseña invalidos." });
   }
-
-  const user = await User.findOne({ username: req.body.username});
-
+const user = await User.findOne({ username: req.body.username});
   if (!user) {
     return res.status(400).json({ msg: "Usuario o contraseña incorrectos." });
   }
-  const token = jwt.sign(
+  const isMatch = await user.comparePassword(req.body.password); 
+ if (isMatch) {
+const token = jwt.sign(
     {
-      //infromacion del usario email: nombre: imagen: ect
+
       email: user.email,
       name: user.name,
       last_Name: user.last_Name,
@@ -27,21 +27,13 @@ export const login = async (req: Request, res: Response) => {
       expiresIn: 60 * 60 * 24,
     }
   );
-
-  const isMatch = await user.comparePassword(req.body.password);
-
-  if (isMatch) {
     return res.status(200).json({ token });
-  }
-
-  res.status(400).json({
-    msg: "email y contraseña incorrectos",
+  } if(!isMatch) {
+res.status(400).json({
+    msg: "usuario y contraseña incorrectos",
   });
-
-  return res.json({
-    token,
-  });
-};
+}
+}
 
 export const profile = (req: Request, res: Response) => {
   return res.json({
