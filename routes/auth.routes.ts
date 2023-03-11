@@ -19,10 +19,10 @@ import {
   
   
 } from "../controllers/auth.controller";
-import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment,deleteComment,updateComments, GetLikeComments} from "../controllers/comments.controller"
+import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment,deleteComment,updateComments, GetLikeComments, countLikesCo} from "../controllers/comments.controller"
 import { addFollow,followTweets,getFollowers} from "../controllers/follow.controller";
 
-import { GetLike,addLikes,deleteLike,GetLikeOwner} from "../controllers/like.controller";
+import { GetLike,addLikes,deleteLike,GetLikeOwner,countLikes} from "../controllers/like.controller";
 import { sendEmail } from "../controllers/sendemail.controller";
 import { requireAuth } from "../middleware/requireAuth";
 const router = Router();
@@ -49,17 +49,19 @@ router.post('/like/:id_tweet/:owner', addLikes);
 router.get('/like/:owner/:id_tweet', GetLike);
 router.delete('/notlike/:owner/:id_tweet', deleteLike);
 router.get('/likeOwner/:id_tweet', GetLikeOwner);
-
+router.get('/countLike/:id_tweet',countLikes)
 
 router.post('/comment/:id_tweet/:owner',addCommentWithOwner)
 router.get('/comment/:id_tweet',commentsByid)
 router.put('/updateComment/:_id',updateComments)
 router.delete('/deleteComment/:_id', deleteComment);
+router.get('/countLikeCo/:id_tweet',countLikesCo)
 
 router.post('/likeComment/:id_tweet/:owner', addLikeComment);
 router.get('/likeComment/:owner/:id_tweet', GetLikeComment);
 router.delete('/notlikeComment/:owner/:id_tweet', dislikeComment);
 router.get('/likeOwnerComments/:id_tweet', GetLikeComments);
+
 
 
 router.post('/follow/:owner', addFollow);

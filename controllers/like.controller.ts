@@ -56,4 +56,12 @@ return res.status(400).json(err)
       return res.status(400).json({ msg: "Tweet incorrecto." });
     }
     
+
+
   };
+  
+export const countLikes = async (req: Request, res: Response) => {
+const replies = await Like.countDocuments({id_tweet: req.params.id_tweet})
+return res.status(200).json(replies);
+  
+}

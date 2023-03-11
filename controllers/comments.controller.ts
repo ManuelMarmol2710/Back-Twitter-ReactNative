@@ -114,3 +114,8 @@ return res.status(400).json(err)
       return res.status(400).json({ msg: "comentario incorrecto." });
     }
   };
+  export const countLikesCo = async (req: Request, res: Response) => {
+    const replies = await Comments.countDocuments({id_tweet: req.params.id_tweet})
+    return res.status(200).json(replies);
+      
+    }
