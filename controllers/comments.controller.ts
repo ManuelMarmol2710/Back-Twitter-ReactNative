@@ -75,6 +75,17 @@ return res.status(400).json(err)
      }
      
    };
+   export const GetLikeComments = async (req: Request,
+    res: Response
+  ) => { 
+    const owner = await Comments.find({ id_tweet: req.params.id_tweet })
+    if (owner) {
+      res.status(200).json(owner);
+    } else {
+      return res.status(400).json({ msg: "Titulo incorrecto." });
+    }
+
+  }
 
   export const updateComments= async (req: Request, res: Response) => {
     if (!req.body.comment) { 

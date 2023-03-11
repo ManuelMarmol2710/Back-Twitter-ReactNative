@@ -19,7 +19,7 @@ import {
   
   
 } from "../controllers/auth.controller";
-import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment,deleteComment,updateComments} from "../controllers/comments.controller"
+import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment,deleteComment,updateComments, GetLikeComments} from "../controllers/comments.controller"
 import { addFollow,followTweets,getFollowers} from "../controllers/follow.controller";
 
 import { GetLike,addLikes,deleteLike,GetLikeOwner} from "../controllers/like.controller";
@@ -59,6 +59,8 @@ router.delete('/deleteComment/:_id', deleteComment);
 router.post('/likeComment/:id_tweet/:owner', addLikeComment);
 router.get('/likeComment/:owner/:id_tweet', GetLikeComment);
 router.delete('/notlikeComment/:owner/:id_tweet', dislikeComment);
+router.get('/likeOwnerComments/:id_tweet', GetLikeComments);
+
 
 router.post('/follow/:owner', addFollow);
 router.get('/follow/:owner1', followTweets);
