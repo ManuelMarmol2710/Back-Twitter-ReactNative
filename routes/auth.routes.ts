@@ -15,12 +15,14 @@ import {
  updatePassword,
   updateUserByEmail,
   TweetsByOwnerOne,
+  updateBiography,
+  
   
 } from "../controllers/auth.controller";
 import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment,deleteComment,updateComments} from "../controllers/comments.controller"
 import { addFollow,followTweets,getFollowers} from "../controllers/follow.controller";
 
-import { addLike, GetLike, dislike} from "../controllers/like.controller";
+import { GetLike,addLikes,deleteLike,GetLikeOwner} from "../controllers/like.controller";
 import { sendEmail } from "../controllers/sendemail.controller";
 import { requireAuth } from "../middleware/requireAuth";
 const router = Router();
@@ -31,6 +33,7 @@ router.get("/profile", requireAuth, profile);
 router.post("/register", register);
 router.put("/update/:email", updateUserByEmail);
 router.put("/updatepassword/:email", updatePassword);
+router.put("/updatebiography/:email", updateBiography);
 
 router.post('/sendEmail/:email',sendEmail );
 
@@ -42,17 +45,20 @@ router.get("/tweetsFilterForOld/:tweets", OrdenarTweetsPorFechas);
 router.get("/tweetsFilterForNew/:tweets", OrdenarTweetsPorFechasNuevas);
 router.delete('/deleteTweets/:tweets',deleteTweet);
 
-router.put('/like/:id_tweet/:owner', addLike);
-router.get('/like/:_id', GetLike);
-router.put('/notlike/:_id', dislike);
+router.post('/like/:id_tweet/:owner', addLikes);
+router.get('/like/:owner/:id_tweet', GetLike);
+router.delete('/notlike/:owner/:id_tweet', deleteLike);
+router.get('/likeOwner/:id_tweet', GetLikeOwner);
+
 
 router.post('/comment/:id_tweet/:owner',addCommentWithOwner)
 router.get('/comment/:id_tweet',commentsByid)
-router.put('/likeComment/:_id/:owner', addLikeComment);
-router.get('/likeComment/:_id', GetLikeComment);
-router.put('/notlikeComment/:_id', dislikeComment);
 router.put('/updateComment/:_id',updateComments)
 router.delete('/deleteComment/:_id', deleteComment);
+
+router.post('/likeComment/:id_tweet/:owner', addLikeComment);
+router.get('/likeComment/:owner/:id_tweet', GetLikeComment);
+router.delete('/notlikeComment/:owner/:id_tweet', dislikeComment);
 
 router.post('/follow/:owner', addFollow);
 router.get('/follow/:owner1', followTweets);

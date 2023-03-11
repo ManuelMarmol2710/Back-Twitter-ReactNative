@@ -75,23 +75,38 @@ export const register = async (
 };
 
 export const updateUserByEmail = async (req: Request, res: Response) => {
-  if (!req.body.name) {
+  if (!req.body.name || !req.body.last_Name) {
     return res.status(400).json({ msg: "Llenar algun campo de datos." });
   }
 
   const user = await User.findOneAndUpdate(
     { email: req.params.email },
     {
-      email: req.params.email,
       name: req.body.name,
       last_Name: req.body.last_Name,
-      biography: req.body.biography,
-    },
-    { upsert: true, new: true }
+   },
+    {  new: true }
   );
 
   res.status(200).json(user);
 };
+export const updateBiography = async (req: Request, res: Response) => {
+  if (!req.body.biography) {
+    return res.status(400).json({ msg: "Llenar algun campo de datos." });
+  }
+
+  const user = await User.findOneAndUpdate(
+    { email: req.params.email },
+    {
+      biography: req.body.biography,
+    },
+    { new: true }
+  );
+
+  res.status(200).json(user);
+};
+
+
 
 export const updatePassword = async (req: Request, res: Response) => {
   const salt = await bcrypt.genSalt(10);

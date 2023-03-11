@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import Comments from "../models/comment";
-import jwt from "jsonwebtoken";
-import tweets from "../models/tweets";
+
 export const addCommentWithOwner = async (
     req: Request,
     res: Response
@@ -31,50 +30,51 @@ export const addCommentWithOwner = async (
     }
   
   }
-  export const addLikeComment = async (
-    req: Request,
-    res: Response
-  ) => {
-    const { id_tweet } = req.params;
-    const {owner} = req.params;
-    const user = await Comments.findByIdAndUpdate(
-        { _id: req.params._id },
-        {
-          id_tweet,  
-         like:true,
-         owner
-        },
-        {  new: true, upsert: true}
-      );
-    
-      res.status(200).json(user);
+   
+export const addLikeComment = async (
+  req: Request,
+  res: Response
+) => {
+  const { owner,id_tweet } = req.params;
+ try{
+ const newtweets = new Comments({
+    owner,
+    id_tweet,
+    like:true
+  });
+
+  const saveTweets = await newtweets.save();
+
+  return res.status(201).json(saveTweets);
+ }catch (err) {
  
-    
-  };
+return res.status(400).json(err)
+}
+};
+ 
   export const GetLikeComment = async (req: Request,
     res: Response
   ) => { 
-    const owner = await Comments.findById({ _id: req.params._id })
-    if (owner) {
-      res.status(200).json(owner);
+    const { owner } = req.params;
+    const getlike = await Comments.findOne({$and: [{owner},{id_tweet: req.params.id_tweet}]} )
+    if (getlike) {
+      res.status(200).json(getlike);
     } else {
       return res.status(400).json({ msg: "Titulo incorrecto." });
     }
 
   }
+ 
   export const dislikeComment = async (req: Request, res: Response) => {
-  
-    const user = await Comments.findByIdAndUpdate(
-      { _id: req.params._id },
-      {
-       like:false
-      },
-      {  new: true }
-    );
-  
-    res.status(200).json(user);
-  };
-
+    const {owner} = req.params;
+     const user = await Comments.findOneAndDelete({$and: [{owner},{id_tweet: req.params.id_tweet}]});
+     if (user) {
+       res.status(200).json("Tweet eliminado");
+     } else {
+       return res.status(400).json({ msg: "Tweet incorrecto." });
+     }
+     
+   };
 
   export const updateComments= async (req: Request, res: Response) => {
     if (!req.body.comment) { 
