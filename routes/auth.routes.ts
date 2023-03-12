@@ -6,6 +6,7 @@ import {
   deleteTweet,
   OrdenarTweetsPorFechas,
   OrdenarTweetsPorFechasNuevas,
+  countTweets,
 
 } from "../controllers/tweets.controller";
 import {
@@ -44,6 +45,8 @@ router.get("/userSearch/:username", TweetsByOwnerOne );
 router.get("/tweetsFilterForOld/:tweets", OrdenarTweetsPorFechas);
 router.get("/tweetsFilterForNew/:tweets", OrdenarTweetsPorFechasNuevas);
 router.delete('/deleteTweets/:tweets',deleteTweet);
+router.get('/countTweets/:owner',countTweets);
+
 
 router.post('/like/:id_tweet/:owner', addLikes);
 router.get('/like/:owner/:id_tweet', GetLike);

@@ -64,3 +64,8 @@ export const deleteTweet = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: "Tweet incorrecto." });
   }
 };
+export const countTweets = async (req: Request, res: Response) => {
+  const replies = await Tweets.countDocuments({owner: req.params.owner})
+  return res.status(200).json(replies);
+    
+  }
