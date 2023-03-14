@@ -6,11 +6,13 @@ export const addTweetsWithOwner = async (
   res: Response
 ): Promise<Response> => {
   const { tweets } = req.body;
+  const {url} = req.body
   if (!req.body.tweets ) {
     return res.status(400).json({ msg: "Usuario o contraseña invalidos." });
   }
  const newtweets = new Tweets({
     tweets,
+    url
   });
 
   const saveTweets = await newtweets.save();

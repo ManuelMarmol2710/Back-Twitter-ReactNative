@@ -3,6 +3,7 @@ import { model, Schema, Document } from "mongoose";
 export interface tweets extends Document {
   tweets: string;
   owner: string;
+  url:string;
 
 }
 
@@ -24,7 +25,11 @@ const tweetsSchema = new Schema(
       type: Date,
       default: Date.now(),
       require: true,
+    },
+    url:{
+      type: String
     }
+  
   
   },
   {
