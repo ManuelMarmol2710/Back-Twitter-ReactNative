@@ -62,11 +62,26 @@ export const register = async (
   ) {
     return res.status(400).json({ msg: "Llenar todos los campos de datos." });
   }
+if(req.body.name.length <= 2) {
+  return res.status(400).json({ msg: "El nombre debe tener al menos 3 caracteres." });
+}
+if(req.body.last_Name.length <= 2) {
+  return res.status(400).json({ msg: "El apellido debe tener al menos 3 caracteres." });
+}
+if (req.body.password.length < 7){
+  return res.status(400).json({ msg: "La contraseña mayor a 7 caracteres" });
+  }
+  if (req.body.username.length <= 3){
+    return res.status(400).json({ msg: "La contraseña mayor a 3 caracteres" });
+    }
 
   const user = await User.findOne({ email: req.body.email });
-
+ const username = await User.findOne({username: req.body.username})
   console.log(user);
   if (user) {
+    return res.status(400).json({ msg: "El correo ya existe." });
+  }
+  if (username) {
     return res.status(400).json({ msg: "El usuario ya existe." });
   }
   const newUser = new User(req.body);

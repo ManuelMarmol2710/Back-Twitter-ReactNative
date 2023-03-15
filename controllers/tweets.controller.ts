@@ -23,11 +23,9 @@ export const addTweetsWithOwner = async (
   return res.status(201).json(saveTweets);
 };
 export const TweetsByOwner = async (req: Request, res: Response) => {
-  const owner = await Tweets.find({ owner: req.params.owner })
-
-
-  if (owner) {
-    res.status(200).json(owner);
+  const tweet = await Tweets.find({owner: req.params.owner }).sort({"time": -1});
+ if (tweet) {
+    res.status(200).json(tweet);
   } else {
     return res.status(400).json({ msg: "Titulo incorrecto." });
   }

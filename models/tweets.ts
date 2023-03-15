@@ -1,4 +1,4 @@
-import { model, Schema, Document } from "mongoose";
+import { model, Schema, Document, now,} from "mongoose";
 
 export interface tweets extends Document {
   tweets: string;
@@ -23,8 +23,8 @@ const tweetsSchema = new Schema(
 
     time:{
       type: Date,
-      default: Date.now(),
-      require: true,
+      default: new Date(),
+       require: true,
     },
     url:{
       type: String
