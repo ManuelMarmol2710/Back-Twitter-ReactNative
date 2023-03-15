@@ -44,7 +44,7 @@ router.get("/tweetSearch/:tweets", TweetsByOneUser);
 router.get("/userSearch/:username", TweetsByOwnerOne );
 router.get("/tweetsFilterForOld/:tweets", OrdenarTweetsPorFechas);
 router.get("/tweetsFilterForNew/:tweets", OrdenarTweetsPorFechasNuevas);
-router.delete('/deleteTweets/:tweets',deleteTweet);
+router.delete('/deleteTweets/:_id',deleteTweet);
 router.get('/countTweets/:owner',countTweets);
 
 

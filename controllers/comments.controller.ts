@@ -107,7 +107,7 @@ return res.status(400).json(err)
 
 
   export const deleteComment = async (req: Request, res: Response) => {
-    const user = await Comments.findByIdAndDelete({ _id: req.params._id });
+    const user = await Comments.findByIdAndDelete({_id: req.params._id });
     if (user) {
       res.status(200).json("comentario eliminado");
     } else {

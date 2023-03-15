@@ -57,7 +57,7 @@ if (tweet) {
 };
 
 export const deleteTweet = async (req: Request, res: Response) => {
-  const user = await Tweets.findOneAndDelete({ tweets: req.params.tweets });
+  const user = await Tweets.findByIdAndDelete({ _id: req.params._id });
   if (user) {
     res.status(200).json("Tweet eliminado");
   } else {
