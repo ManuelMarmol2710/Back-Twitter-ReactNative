@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Like from "../models/like";
+import Tweets from "../models/tweets";
 
   
 export const addLikes = async (
@@ -47,6 +48,19 @@ return res.status(400).json(err)
 
   }
  
+  export const GetLikeFiltrar = async (req: Request,
+    res: Response
+  ) => {
+    const owner = await Like.find().sort({"id_tweet": 1});
+  //  const owner1 = owner.id_tweet
+    //const owner2 = await Tweets.find(owner1)
+    if (owner) {
+      res.status(200).json(owner);
+    } else {
+      return res.status(400).json({ msg: "Titulo incorrecto." });
+    }
+
+  }
   export const deleteLike = async (req: Request, res: Response) => {
    const {owner} = req.params;
     const user = await Like.findOneAndDelete({$and: [{owner},{id_tweet: req.params.id_tweet}]});

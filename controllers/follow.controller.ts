@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import follow from "../models/follow";
 import Tweets from "../models/tweets";
+
 export const addFollow = async (
   req: Request,
   res: Response
@@ -17,30 +18,33 @@ export const addFollow = async (
   await newfollowWithOwner.save();
   return res.status(201).json(saveFollow);
 };
-export const followTweets = async (req: Request, res: Response) => {
-    const followers = await follow.find(
-     { owner: req.body.owner },
-    { following: 0 | 1, _id: 0 }
-  );
-  if (followers) {
-    const owner1 = await Tweets.find({ followers }, { _id: 0 }).select(
-      "tweets owner"
-    );
-    console.log(followers)
-    res.status(200).json(owner1);
-  
-};
+
+export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
+  const owner = await follow.find({owner: req.params.owner})
+for(var i of owner){
+const seguidores = i.following
+console.log(seguidores)
+const tweetsDeLosQueSigo = await Tweets.find({owner: seguidores})
+console.log(tweetsDeLosQueSigo)
 }
-
-export const getFollowers = async (req: Request, res: Response) => {
-  const owner = await follow.find(
-    { owner: { $in: req.params.owner } },
-    { following: 1, _id: 0 }
-  );
-
-  if (owner) {
-    res.status(200).json(owner);
-  } else {
-    return res.status(400).json({ msg: "Titulo incorrecto." });
-  }
 };
+
+export const ObtenerQuienSigo = async (req: Request, res: Response) => {
+  const owner = await follow.find({owner: req.params.owner}) 
+  res.status(200).json(owner)
+};
+
+
+export const deleteFollow = async (req: Request, res: Response) => {
+  const {owner} = req.params;
+   const user = await follow.findOneAndDelete({$and: [{owner},{following: req.params.following}]});
+   if (user) {
+     res.status(200).json("Usuario ya no lo sigues");
+   } else {
+     return res.status(400).json({ msg: " Incorrecto." });
+   }
+   
+
+
+ };
+

@@ -8,7 +8,8 @@ export const login = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: "Usuario o contraseña invalidos." });
   }
 const user = await User.findOne({ username: req.body.username});
-  if (!user) {
+  
+if (!user) {
     return res.status(400).json({ msg: "Usuario o contraseña incorrectos." });
   }
   const isMatch = await user.comparePassword(req.body.password); 

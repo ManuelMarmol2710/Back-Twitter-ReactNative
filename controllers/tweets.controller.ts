@@ -47,6 +47,14 @@ if (tweet) {
     return res.status(400).json({ msg: "Tweet  no encontrado." });
   }
 };
+export const OrdenarTweetsPorImages = async (req: Request, res: Response) => {
+  const tweet = await Tweets.find({url: { $regex: req.params.tweets }}).sort({"time": -1});
+if (tweet) {
+    res.status(200).json(tweet);
+  } else {
+    return res.status(400).json({ msg: "Tweet  no encontrado." });
+  }
+};
 export const OrdenarTweetsPorFechasNuevas = async (req: Request, res: Response) => {
   const tweet = await Tweets.find({tweets: { $regex: req.params.tweets }}).sort({"time": -1});
 if (tweet) {
