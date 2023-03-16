@@ -45,10 +45,7 @@ tweetsFollowing.push(temp)
 }
 res.status(200).json(tweetsFollowing)
 };
-export const ObtenerQuienSigo = async (req: Request, res: Response) => {
-  const owner = await follow.find({owner: req.params.owner}) 
-  res.status(200).json(owner)
-};
+
 
 
 export const deleteFollow = async (req: Request, res: Response) => {
