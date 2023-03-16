@@ -24,7 +24,7 @@ import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislik
 import { addFollow, getFollowersAndTweets, deleteFollow, getFollows,countFollowing} from "../controllers/follow.controller";
 
 import { GetLike,addLikes,deleteLike,GetLikeOwner,countLikes, GetLikeFiltrar} from "../controllers/like.controller";
-import { sendEmail,ObtenerQuienSigo } from "../controllers/sendemail.controller";
+import { sendEmail,  ObtenerQuienSigo } from "../controllers/sendemail.controller";
 import { requireAuth } from "../middleware/requireAuth";
 const router = Router();
 
@@ -72,6 +72,7 @@ router.get('/followers/:owner',  getFollowersAndTweets);
 router.get('/following/:owner/:following', getFollows)
 router.get('/countFollowing/:owner',countFollowing)
 router.delete('/unfollow/:owner/:following', deleteFollow);
+
 
 
 

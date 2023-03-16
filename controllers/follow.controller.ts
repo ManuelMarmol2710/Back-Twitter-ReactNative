@@ -47,7 +47,6 @@ res.status(200).json(tweetsFollowing)
 };
 
 
-
 export const deleteFollow = async (req: Request, res: Response) => {
   const {owner} = req.params;
    const user = await follow.findOneAndDelete({$and: [{owner},{following: req.params.following}]});

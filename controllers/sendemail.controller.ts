@@ -1,6 +1,7 @@
 
 import { Request, Response } from "express";
 import User from "../models/users";
+import follow from "../models/follow";
 const nodemailer = require("nodemailer");
 export const sendEmail = async (req: Request, res: Response) => {
   const user = await User.findOne({ email: req.params.email });
