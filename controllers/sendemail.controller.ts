@@ -35,3 +35,8 @@ export const sendEmail = async (req: Request, res: Response) => {
   console.log("Message sent: %s", info.messageId);
   res.status(200).json(info);
 };
+
+export const ObtenerQuienSigo = async (req: Request, res: Response) => {
+  const owner = await follow.find({owner: req.params.owner}) 
+  res.status(200).json(owner)
+};
