@@ -33,7 +33,9 @@ export const getFollows =async (req:Request,res:Response) => {
 
 }
 
+export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
 
+};
 export const ObtenerQuienSigo = async (req: Request, res: Response) => {
   const owner = await follow.find({owner: req.params.owner}) 
   res.status(200).json(owner)
@@ -52,4 +54,10 @@ export const deleteFollow = async (req: Request, res: Response) => {
 
 
  };
+
+ export const countFollowing = async (req: Request, res: Response) => {
+  const replies = await follow.countDocuments({owner: req.params.owner})
+  return res.status(200).json(replies);
+    
+  }
 
