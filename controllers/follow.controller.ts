@@ -21,7 +21,7 @@ export const addFollow = async (
 
 export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
 
-}
+
 };
 
 export const ObtenerQuienSigo = async (req: Request, res: Response) => {
