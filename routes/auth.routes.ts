@@ -67,7 +67,7 @@ router.get('/likeOwnerComments/:id_tweet', requireAuth,GetLikeComments);
 
 
 
-router.post('/follow/:owner', addFollow);
+router.post('/follow/:owner/:following', addFollow);
 router.get('/follow/:owner', ObtenerQuienSigo);
 router.get('/followers/:owner',  getFollowersAndTweets);
 router.delete('/unfollow/:owner/:following', deleteFollow);

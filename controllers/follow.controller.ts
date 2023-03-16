@@ -6,7 +6,7 @@ export const addFollow = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const { following } = req.body;
+  const { following } = req.params;
   const newFollow = new follow({
     following,
   });
@@ -20,8 +20,13 @@ export const addFollow = async (
 };
 
 export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
-
-
+  const owner = await follow.find({owner: req.params.owner})
+for(var i of owner){
+const seguidores = i.following
+console.log(seguidores)
+const tweetsDeLosQueSigo = await Tweets.find({owner: seguidores})
+console.log(tweetsDeLosQueSigo)
+}
 };
 
 export const ObtenerQuienSigo = async (req: Request, res: Response) => {
