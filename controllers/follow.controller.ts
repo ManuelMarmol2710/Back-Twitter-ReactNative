@@ -35,7 +35,6 @@ export const getFollows =async (req:Request,res:Response) => {
 
 export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
   const owner = await follow.find({owner: req.params.owner}) 
-
   let tweetsFollowing=[]
   for(var i of owner){
 const seguidores = i.following
