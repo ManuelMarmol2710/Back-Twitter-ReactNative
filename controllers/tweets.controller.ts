@@ -32,7 +32,7 @@ export const TweetsByOwner = async (req: Request, res: Response) => {
 };
 
 export const TweetsByOneUser = async (req: Request, res: Response) => {
-  const tweet = await Tweets.find({ tweets:{ $regex: req.params.tweets }});
+  const tweet = await Tweets.find({ tweets:{ $regex: req.params.tweets }}).sort({"time": -1});
 if (tweet) {
     res.status(200).json(tweet);
   } else {
