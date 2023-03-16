@@ -20,8 +20,28 @@ export const addFollow = async (
 };
 
 export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
-
+  const owner = await follow.find({owner: req.params.owner})
+for(var i of owner){
+const seguidores = i.following
+console.log(seguidores)
+const tweetsDeLosQueSigo = await Tweets.find({owner: seguidores})
+console.log(tweetsDeLosQueSigo)
+}
 };
+
+export const getFollows =async (req:Request,res:Response) => {
+  const { owner } = req.params;
+    const getfollow = await follow.findOne({$and: [{owner},{following: req.params.following}]} )
+    if (getfollow) {
+      res.status(200).json(getfollow);
+    } else {
+      return res.status(400).json({ msg: "Titulo incorrecto." });
+    }
+
+
+
+}
+
 
 export const ObtenerQuienSigo = async (req: Request, res: Response) => {
   const owner = await follow.find({owner: req.params.owner}) 
