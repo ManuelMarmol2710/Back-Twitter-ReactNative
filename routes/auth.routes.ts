@@ -21,7 +21,7 @@ import {
   
 } from "../controllers/auth.controller";
 import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislikeComment,deleteComment,updateComments, GetLikeComments, countLikesCo} from "../controllers/comments.controller"
-import { addFollow,ObtenerQuienSigo, getFollowersAndTweets, deleteFollow, getFollows, countFollowing} from "../controllers/follow.controller";
+import { addFollow,ObtenerQuienSigo, getFollowersAndTweets, deleteFollow, getFollows} from "../controllers/follow.controller";
 
 import { GetLike,addLikes,deleteLike,GetLikeOwner,countLikes, GetLikeFiltrar} from "../controllers/like.controller";
 import { sendEmail } from "../controllers/sendemail.controller";
@@ -66,13 +66,20 @@ router.delete('/notlikeComment/:owner/:id_tweet', requireAuth,dislikeComment);
 router.get('/likeOwnerComments/:id_tweet', requireAuth,GetLikeComments);
 
 
-
 router.post('/follow/:owner/:following', addFollow);
 router.get('/follow/:owner', ObtenerQuienSigo);
 router.get('/followers/:owner',  getFollowersAndTweets);
-router.get('/following/:owner/:following', getFollows)
-router.get('/countFollowing/:owner', countFollowing)
+router.get('following/:owner/:following', getFollows)
 router.delete('/unfollow/:owner/:following', deleteFollow);
+
+
+
+
+
+
+
+
+
 
 
 

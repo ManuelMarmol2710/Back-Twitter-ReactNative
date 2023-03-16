@@ -1,7 +1,7 @@
 import { model, Schema, Document } from "mongoose";
 
 export interface follow extends Document {
-  seguiendo: string;
+  following: string;
   owner: string;
 
 }
