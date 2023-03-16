@@ -38,10 +38,10 @@ export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
   let tweetsFollowing=[]
   for(var i of owner){
 const seguidores = i.following
-console.log(seguidores)
+
 let temp = await Tweets.find({owner:seguidores}).sort({"time": -1});
 tweetsFollowing.push(temp)
-console.log(tweetsFollowing)
+
 }
 res.status(200).json(tweetsFollowing)
 };
