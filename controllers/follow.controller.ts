@@ -19,10 +19,6 @@ export const addFollow = async (
   return res.status(201).json(saveFollow);
 };
 
-export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
-
-
-};
 
 export const getFollows =async (req:Request,res:Response) => {
   const { owner } = req.params;
