@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
+import { Types } from "mongoose";
 import follow from "../models/follow";
-import Tweets from "../models/tweets";
+import Tweets, { tweets } from "../models/tweets";
 
 export const addFollow = async (
   req: Request,
@@ -36,14 +37,16 @@ export const getFollows =async (req:Request,res:Response) => {
 export const getFollowersAndTweets = async (req: Request, res: Response)  =>  {
   const owner = await follow.find({owner: req.params.owner}) 
   let tweetsFollowing=[]
+  let followers: (tweets & { _id: Types.ObjectId; })[]=[]
   for(var i of owner){
 const seguidores = i.following
 
 let temp = await Tweets.find({owner:seguidores}).sort({"time": -1});
 tweetsFollowing.push(temp)
+tweetsFollowing.forEach((contenido) => contenido.forEach((dentro) => followers.push(dentro)));
 
 }
-res.status(200).json(tweetsFollowing)
+res.status(200).json(followers)
 };
 
 
