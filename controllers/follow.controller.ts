@@ -43,7 +43,7 @@ const seguidores = i.following
 
 let temp = await Tweets.find({owner:seguidores}).sort({"time": -1});
 tweetsFollowing.push(temp)
-tweetsFollowing.forEach((contenido) => contenido.forEach((dentro) => followers.push(dentro)));
+ tweetsFollowing.forEach((contenido) => contenido.forEach((dentro) => followers.push(dentro)));
 
 }
 res.status(200).json(followers)

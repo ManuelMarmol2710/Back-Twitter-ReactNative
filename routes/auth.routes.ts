@@ -24,7 +24,7 @@ import {addCommentWithOwner,commentsByid ,addLikeComment, GetLikeComment, dislik
 import { addFollow, getFollowersAndTweets, deleteFollow, getFollows,countFollowing} from "../controllers/follow.controller";
 
 import { GetLike,addLikes,deleteLike,GetLikeOwner,countLikes, GetLikeFiltrar} from "../controllers/like.controller";
-import { sendEmail,  ObtenerQuienSigo } from "../controllers/sendemail.controller";
+import { sendEmail,  ObtenerQuienSigo, ObtenerQuienMeSigue,countFollowers } from "../controllers/sendemail.controller";
 import { requireAuth } from "../middleware/requireAuth";
 const router = Router();
 
@@ -66,12 +66,14 @@ router.delete('/notlikeComment/:owner/:id_tweet', requireAuth,dislikeComment);
 router.get('/likeOwnerComments/:id_tweet', requireAuth,GetLikeComments);
 
 
-router.post('/follow/:owner/:following', addFollow);
-router.get('/follow/:owner', ObtenerQuienSigo);
-router.get('/followers/:owner',  getFollowersAndTweets);
-router.get('/following/:owner/:following', getFollows)
-router.get('/countFollowing/:owner',countFollowing)
-router.delete('/unfollow/:owner/:following', deleteFollow);
+router.post('/follow/:owner/:following',requireAuth, addFollow);
+router.get('/follow/:owner',requireAuth, ObtenerQuienSigo);
+router.get('/Followers/:following',requireAuth,ObtenerQuienMeSigue)
+router.get('/followers/:owner', requireAuth, getFollowersAndTweets);
+router.get('/following/:owner/:following',requireAuth, getFollows)
+router.get('/countFollowing/:owner',requireAuth,countFollowing)
+router.get('/countFollowers/:following',requireAuth,countFollowers)
+router.delete('/unfollow/:owner/:following', requireAuth,deleteFollow);
 
 
 

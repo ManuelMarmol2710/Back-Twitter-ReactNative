@@ -41,3 +41,13 @@ export const ObtenerQuienSigo = async (req: Request, res: Response) => {
   const owner = await follow.find({owner: req.params.owner}) 
   res.status(200).json(owner)
 };
+
+export const ObtenerQuienMeSigue = async (req: Request, res: Response) => {
+  const owner = await follow.find({following: req.params.following}) 
+  res.status(200).json(owner)
+};
+export const countFollowers = async (req: Request, res: Response) => {
+  const replies = await follow.countDocuments({following: req.params.following})
+  return res.status(200).json(replies);
+    
+  }
