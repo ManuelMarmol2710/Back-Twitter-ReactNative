@@ -7,6 +7,7 @@ import {
   OrdenarTweetsPorFechas,
   OrdenarTweetsPorFechasNuevas,
   countTweets,
+  OrdenarTweetsPorImagen,
 
 } from "../controllers/tweets.controller";
 import {
@@ -43,6 +44,7 @@ router.get("/tweetSearch/:tweets",requireAuth, TweetsByOneUser);
 router.get("/userSearch/:username",requireAuth, TweetsByOwnerOne );
 router.get("/tweetsFilterForOld/:tweets", requireAuth,OrdenarTweetsPorFechas);
 router.get("/tweetsFilterForNew/:tweets",requireAuth, OrdenarTweetsPorFechasNuevas);
+router.get("/tweetsFilterImage/:url",requireAuth, OrdenarTweetsPorImagen);
 router.delete('/deleteTweets/:_id',requireAuth,deleteTweet);
 router.get('/countTweets/:owner',requireAuth, countTweets);
 
@@ -55,8 +57,8 @@ router.get('/countLike/:id_tweet',requireAuth,countLikes)
 router.get('/likeFiltrarfol',requireAuth,GetLikeFiltrar)
 
 router.post('/comment/:id_tweet/:owner',requireAuth,addCommentWithOwner)
-router.get('/comment/:id_tweet',requireAuth,commentsByid)
-router.put('/updateComment/:_id',requireAuth,updateComments)
+router.get('/comment/:id_tweet', requireAuth,commentsByid)
+router.put('/updateComment/:_id', requireAuth,updateComments)
 router.delete('/deleteComment/:_id',requireAuth, deleteComment);
 router.get('/countLikeCo/:id_tweet',requireAuth,countLikesCo)
 

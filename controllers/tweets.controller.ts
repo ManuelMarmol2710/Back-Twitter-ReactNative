@@ -72,6 +72,15 @@ export const deleteTweet = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: "Tweet incorrecto." });
   }
 };
+export const OrdenarTweetsPorImagen = async (req: Request, res: Response) => {
+  const tweet = await Tweets.find({url: { $regex: req.params.url }}).sort({"time": -1});
+if (tweet) {
+    res.status(200).json(tweet);
+  } else {
+    return res.status(400).json({ msg: "Tweet  no encontrado." });
+  }
+};
+
 export const countTweets = async (req: Request, res: Response) => {
   const replies = await Tweets.countDocuments({owner: req.params.owner})
   return res.status(200).json(replies);

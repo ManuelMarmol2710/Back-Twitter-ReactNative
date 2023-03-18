@@ -1,0 +1,1204 @@
+{
+	"info": {
+		"_postman_id": "6c3c0d88-362b-49f6-a00e-b2657fb6f660",
+		"name": "Segundo Proyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25517635"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n  \"username\":\"manuelmarmol27\",\r\n\"email\":\"manuemarmolonicos27@gmail.com\",\r\n\"password\":\"asdzxc\",\r\n   \r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\":\"manuelmarmol27\",\r\n\"email\":\"manuemarmolonicos27@gmail.com\",\r\n\"password\":\"asdzxc\",\r\n\"name\":\"manuel\",\r\n\"last_Name\":\"marmol\",\r\n\"biography\":\"Hello i'm Manuel Marmol\"\r\n\r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendemail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"password\":\"123456\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/sendemail/manuelmarmolonicos@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sendemail",
+								"manuelmarmolonicos@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Perfil",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXN0IjoidGVzdCIsImlhdCI6MTY3Njc1NDc0OCwiZXhwIjoxNjc2ODQxMTQ4fQ.fVbAxwbWNveLoUvNnU48Ve9FgzeyUlPTZrGGgxQ8RPY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"Paige Crayden\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/userSearch/manuelmarmolonicos@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"userSearch",
+								"manuelmarmolonicos@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update contraseña",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"concept\":\"\"\r\n   \r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/profile/pollo3@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profile",
+								"pollo3@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Biography",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"concept\":\"\"\r\n   \r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/profile/pollo3@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profile",
+								"pollo3@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Perfil",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"name\":\"Manuelon\",\r\n    \"last_Name\":\"Marmolon\"\r\n   \r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/update/manuelmarmol27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"update",
+								"manuelmarmol27"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tweets",
+			"item": [
+				{
+					"name": "Enviar tweet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"Esta chido\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/tweet/yuca",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tweet",
+								"yuca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Tweet",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"Paige Crayden\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/tweetSearch/Paige Crayden",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tweetSearch",
+								"Paige Crayden"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener tweet el que inicio sesion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"holaaa\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/tweet/manuelmarmol27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tweet",
+								"manuelmarmol27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Tweet por orden fecha del mas viejo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"Paige Crayden\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/tweetsFilterForOld",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tweetsFilterForOld"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Tweet por orden de fecha nuevo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"Paige Crayden\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/tweetsFilterForNew/P",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tweetsFilterForNew",
+								"P"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Tweet por imagen",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"Paige Crayden\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/tweetSearch/Paige Crayden",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tweetSearch",
+								"Paige Crayden"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Count Tweets",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tweets\":\"holaaa\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/countTweets/oferrer27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"countTweets",
+								"oferrer27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Tweet",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/deleteTweets/6411f33c7f85a8e421a3fff9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deleteTweets",
+								"6411f33c7f85a8e421a3fff9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Likes",
+			"item": [
+				{
+					"name": "Darle Like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/like/64060896c9251dedd24aa491/osmanferrerl27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"like",
+								"64060896c9251dedd24aa491",
+								"osmanferrerl27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Like",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/like/640744ba750559a540273eb5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"like",
+								"640744ba750559a540273eb5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener quien le dio like",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/likeOwner/640744ba750559a540273eb5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"likeOwner",
+								"640744ba750559a540273eb5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener count like",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/countLike/64060896c9251dedd24aa491",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"countLike",
+								"64060896c9251dedd24aa491"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quitar Like",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/notlike/manuelmarmol27/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"notlike",
+								"manuelmarmol27",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar Likes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/likeFiltrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"likeFiltrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentarios",
+			"item": [
+				{
+					"name": "Enviar comentario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"comment\":\"otra  \"\r\n\r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/comment/6406088ac9251dedd24aa488/manuelmarmol27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"6406088ac9251dedd24aa488",
+								"manuelmarmol27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenercomentariodeltweet",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"owner\":\"manuelmarmolonicos@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/comment/6406088ac9251dedd24aa488",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"6406088ac9251dedd24aa488"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Comentario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/deleteComment/Lalaland mejor película ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deleteComment",
+								"Lalaland mejor película "
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Like Comentario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/likeComment/manuelmarmol27/6407dfec9a19cb9ffb6f43da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"likeComment",
+								"manuelmarmol27",
+								"6407dfec9a19cb9ffb6f43da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Comentario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"manuelmarmolonicos@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/updateComment/640be635a0ee8113ca72d88f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"updateComment",
+								"640be635a0ee8113ca72d88f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Darle Like Comentario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/likeComment/6407dfec9a19cb9ffb6f43da/manuelmarmol27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"likeComment",
+								"6407dfec9a19cb9ffb6f43da",
+								"manuelmarmol27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Like to False Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/notlikeComment/6407dfec9a19cb9ffb6f43da",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"notlikeComment",
+								"6407dfec9a19cb9ffb6f43da"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Follow",
+			"item": [
+				{
+					"name": "Seguir",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"following\":\"marmolonicos\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/follow/manuelmarmol27/mono33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"follow",
+								"manuelmarmol27",
+								"mono33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener los que sigo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/follow/manuelmarmol27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"follow",
+								"manuelmarmol27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/unfollow/manuelmarmol27/mono33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"unfollow",
+								"manuelmarmol27",
+								"mono33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener los tweets de los que sigo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/followers/manuelmarmol27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"followers",
+								"manuelmarmol27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "si lo sigo o no",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/following/manuelmarmol27/oferrer27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"following",
+								"manuelmarmol27",
+								"oferrer27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QUienMeSigue",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/follow/tomasvillasmil@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"follow",
+								"tomasvillasmil@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener count following",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/countFollowing/manuelmarmol27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"countFollowing",
+								"manuelmarmol27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener count followers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/countFollowing/{{userEJ}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"countFollowing",
+								"{{userEJ}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
