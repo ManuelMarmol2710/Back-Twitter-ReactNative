@@ -66,14 +66,14 @@ router.delete('/notlikeComment/:owner/:id_tweet', requireAuth,dislikeComment);
 router.get('/likeOwnerComments/:id_tweet', requireAuth,GetLikeComments);
 
 
-router.post('/follow/:owner/:following',requireAuth, addFollow);
+router.post('/follow/:owner/:following',requireAuth,addFollow);
 router.get('/follow/:owner',requireAuth, ObtenerQuienSigo);
-router.get('/Followers/:following',requireAuth,ObtenerQuienMeSigue)
-router.get('/followers/:owner', requireAuth, getFollowersAndTweets);
+router.get('/Followerss/:following',requireAuth,ObtenerQuienMeSigue)
+router.get('/followers/:owner',requireAuth, getFollowersAndTweets);
 router.get('/following/:owner/:following',requireAuth, getFollows)
 router.get('/countFollowing/:owner',requireAuth,countFollowing)
 router.get('/countFollowers/:following',requireAuth,countFollowers)
-router.delete('/unfollow/:owner/:following', requireAuth,deleteFollow);
+router.delete('/unfollow/:owner/:following',requireAuth, deleteFollow);
 
 
 
